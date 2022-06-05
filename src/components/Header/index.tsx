@@ -6,7 +6,7 @@ export function Header() {
     <header className={styles.header}>
       <nav>
         <Link href="/">
-          <h1>FabyoSK</h1>
+          <h1>FabyoSK Blog</h1>
         </Link>
       </nav>
     </header>

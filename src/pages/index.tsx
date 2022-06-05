@@ -4,7 +4,6 @@ import Link from 'next/link';
 import styles from './home.module.scss';
 
 import { createClient } from '../../prismicio';
-import { PrismicRichText } from '@prismicio/react';
 
 export default function Posts({
   posts,
