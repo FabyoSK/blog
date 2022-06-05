@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --red: #e02041;
+
+  --background: #13131a;
+
+  --foreground: #202020;
+
+  --text: #dddddd;
+  --title-secondary: #41414d;
+
+  --text-primary: #737380;
+  --text-secondary: #a8a8b3;
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5;
+  }
+}
+
+body {
+  background-color: var(--background);
+}
+body,
+input,
+textarea,
+button {
+  font-family: "Fira Code", monospace;
+  color: var(--text);
+}
+h1 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+p {
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+}

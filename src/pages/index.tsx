@@ -1,15 +1,64 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
-export default function Posts() {
+import styles from './home.module.scss';
+
+import { createClient } from '../../prismicio';
+import { PrismicRichText } from '@prismicio/react';
+
+export default function Posts({
+  posts,
+}) {
   return (
     <>
       <Head>
-        <title>Posts | FabyoSK</title>
+        <title>Posts | FabyoSK Blog</title>
       </Head>
 
-      <main>
-        <h1>Best blog everrrrrrr - FSKZinho</h1>
+      <main className={styles.container}>
+        <div className={styles.posts}>
+          {posts.map(post => (
+            <div key={post.slug}>
+              <Link href={`/posts/${post.slug}`}>
+                <span>
+                  <time>{post.updatedAt}</time>
+                  <strong>
+                    {post.title}
+                  </strong>
+                  <p>
+                    {post.excerpt}
+                  </p>
+                </span>
+              </Link>
+            </div>
+          ))}
+        </div>
       </main>
     </>
   )
+}
+
+
+
+export async function getStaticProps() {
+  const client = createClient()
+
+  const response = await client.getAllByType('post')
+
+  const posts = response.map(post => ({
+    slug: post.uid,
+    title: post.data.title,
+    excerpt: post.data.content
+      .find(c => c.type === 'paragraph')?.text ?? '',
+    updatedAt: new Date(post.last_publication_date).toLocaleDateString('en', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric',
+    }),
+  }));
+
+  return {
+    props: { posts },
+    revalidate: 60 * 60, // 1 hour
+  }
 }
