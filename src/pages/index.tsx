@@ -5,9 +5,7 @@ import styles from './home.module.scss';
 
 import { createClient } from '../../prismicio';
 
-export default function Posts({
-  posts,
-}) {
+export default function Posts({ posts }) {
   return (
     <>
       <Head>
@@ -16,17 +14,13 @@ export default function Posts({
 
       <main className={styles.container}>
         <div className={styles.posts}>
-          {posts.map(post => (
+          {posts.map((post) => (
             <div key={post.slug}>
               <Link href={`/posts/${post.slug}`}>
                 <span>
                   <time>{post.updatedAt}</time>
-                  <strong>
-                    {post.title}
-                  </strong>
-                  <p>
-                    {post.excerpt}
-                  </p>
+                  <strong>{post.title}</strong>
+                  <p>{post.excerpt}</p>
                 </span>
               </Link>
             </div>
@@ -34,21 +28,18 @@ export default function Posts({
         </div>
       </main>
     </>
-  )
+  );
 }
 
-
-
 export async function getStaticProps() {
-  const client = createClient()
+  const client = createClient();
 
-  const response = await client.getAllByType('post')
+  const response = await client.getAllByType('post');
 
-  const posts = response.map(post => ({
+  const posts = response.map((post) => ({
     slug: post.uid,
     title: post.data.title,
-    excerpt: post.data.content
-      .find(c => c.type === 'paragraph')?.text ?? '',
+    excerpt: post.data.content.find((c) => c.type === 'paragraph')?.text ?? '',
     updatedAt: new Date(post.last_publication_date).toLocaleDateString('en', {
       day: '2-digit',
       month: 'long',
@@ -59,5 +50,5 @@ export async function getStaticProps() {
   return {
     props: { posts },
     revalidate: 60 * 60, // 1 hour
-  }
+  };
 }
