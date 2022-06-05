@@ -13,6 +13,7 @@ module.exports = {
       'version': 'latest',
     },
   },
+  'parser': '@typescript-eslint/parser',
   'parserOptions': {
     'ecmaFeatures': {
       'jsx': true,
@@ -22,8 +23,10 @@ module.exports = {
   },
   'plugins': [
     'react',
+    '@typescript-eslint'
   ],
   'rules': {
+    'react/prop-types': 'off',
     'indent': [
       'error',
       2,
