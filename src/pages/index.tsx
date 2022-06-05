@@ -40,7 +40,7 @@ export async function getStaticProps() {
   const posts = response.map((post) => ({
     slug: post.uid,
     title: post.data.title,
-    excerpt: post.data.content.find((c) => c.type === 'paragraph')?.text ?? '',
+    excerpt: post.data.excerpt,
     updatedAt: new Date(post.last_publication_date).toLocaleDateString('en', {
       day: '2-digit',
       month: 'long',
