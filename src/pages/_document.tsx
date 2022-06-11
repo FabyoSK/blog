@@ -12,7 +12,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-FT0JMV6RH4" />
-          <script
+          {/* <script
             dangerouslySetInnerHTML={{
               __html: `
               window.dataLayer = window.dataLayer || [];
@@ -22,7 +22,7 @@ class MyDocument extends Document {
               gtag('config', 'G-FT0JMV6RH4');
             `,
             }}
-          />
+          /> */}
         </Head>
         <body>
           <Main />
