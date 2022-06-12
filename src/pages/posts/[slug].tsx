@@ -12,7 +12,7 @@ export default function Post({ post }) {
   return (
     <>
       <Head>
-        <title>Blog | FabyoSK Blog</title>
+        <title>{post.title} | FabyoSK Blog</title>
       </Head>
 
       <main className={styles.container}>
