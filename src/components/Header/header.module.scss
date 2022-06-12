@@ -57,6 +57,12 @@
     }
     nav {
       padding: 1.5rem 0;
+      flex-direction: column;
+
+      button {
+        margin-top: 1.5rem;
+      }
+      
       ul {
         display: none;
       }
