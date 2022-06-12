@@ -5,6 +5,9 @@ import { PrismicRichText } from '@prismicio/react';
 import { createClient } from '../../../prismicio';
 import styles from './post.module.scss';
 
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+
 export default function Post({ post }) {
   return (
     <>
@@ -18,7 +21,14 @@ export default function Post({ post }) {
           <time>{post.updatedAt}</time>
 
           <div className={styles.postContent}>
-            <PrismicRichText field={post.content} />
+            <PrismicRichText
+              field={post.content}
+              components={{
+                preformatted: ({ node }) => <SyntaxHighlighter language="javascript" style={oneDark}>
+                  {node.text}
+                </SyntaxHighlighter>
+              }}
+            />
           </div>
         </article>
       </main>
