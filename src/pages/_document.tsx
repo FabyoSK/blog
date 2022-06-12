@@ -1,6 +1,5 @@
 import React from 'react';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
-import Script from 'next/script';
 
 class MyDocument extends Document {
   render() {
@@ -12,8 +11,8 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap"
             rel="stylesheet"
           />
-          <Script async src="https://www.googletagmanager.com/gtag/js?id=G-FT0JMV6RH4" />
-          <Script
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-FT0JMV6RH4" />
+          <script
             dangerouslySetInnerHTML={{
               __html: `
               window.dataLayer = window.dataLayer || [];
