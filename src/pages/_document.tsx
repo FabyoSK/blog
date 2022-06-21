@@ -6,6 +6,8 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <meta name="robots" content="all" />
+          <meta name="author" content="Fábio Alves, FabyoSK" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap"

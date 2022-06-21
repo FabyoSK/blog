@@ -1,20 +1,22 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
+
 import { PrismicRichText } from '@prismicio/react';
 import { createClient } from '../../../prismicio';
 import styles from './post.module.scss';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import Seo from '../../components/SEO';
 
 export default function Post({ post }) {
   return (
     <>
-      <Head>
-        <title>{post.title} | FabyoSK Blog</title>
-      </Head>
-
+      <Seo
+        title={`${post.title} | FabyoSK Blog`}
+        description={post.excerpt}
+        slug={post.slug}
+      />
       <main className={styles.container}>
         <article className={styles.post}>
           <h1>{post.title}</h1>
@@ -63,6 +65,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     slug,
     title: response.data.title,
     content: response.data.content,
+    excerpt: response.data.excerpt,
     updatedAt: new Date(response.last_publication_date).toLocaleDateString(
       'en',
       {
